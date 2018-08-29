@@ -1,11 +1,15 @@
 # Ads Management
-A backend layer for ads managment
+An app for ads managment
 
 # 1. Technologies
 ```
+BACKEND:
 NodeJS v8.9.1 / npm v5.5.1 - Server
 MongDB v4.0.0 - NoSql database
 Typescript - Javascript object oriented
+
+FRONTEND:
+Angular 6, Typescript, Bootstrap
 ```
 
 # 2. Prerequisites
@@ -16,22 +20,32 @@ Node / Npm
 MongoDb
   - https://www.mongodb.com/download-center
 
-Typescript: Execute the commands in a terminal
+Typescript
   - npm install -g typescript
   - npm install -g tsc
+  
+AngularCli
+  - npm install -g @angular/cli
 ```
 
 # 3. App Up and Running 
 ```
+
+Download code git clone https://github.com/maabreve/catho.git 
+
 MongoDB
 * Execute mongod.exe in a separated terminal 
 
-Application
-* Download code git clone https://github.com/maabreve/catho.git 
-* npm start
+Backend
+* go to backend folder
+* npm install & npm start
+
+Fronend
+* go to frontend folder
+* npm install & ng serve --open
 ```
 
-# 4. Entities Business
+# 4. Backend Entities
 
 ## 4.1. PricingRules Entity
 This document store the clients pricing rules for discount. 
@@ -244,7 +258,7 @@ The architecture was designed using the `Model, Repository, Service, Controller`
 There are base classes and interfaces using generics with the basic CRUD operations for Repositories, Services and Controller layers. Classes inherit from the base class with all basic operations
   
 
-#### 6.3. Folder Structure
+#### 6.3. Backend Folder Structure
 
 ```
 ├───config
