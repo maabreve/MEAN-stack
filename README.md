@@ -271,11 +271,18 @@ There are base classes and interfaces using generics with the basic CRUD operati
     * PUT /api/pricing-rules
     * DELETE /api/pricing-rules/:id
 
-#### 7.3. Product CRUD
+#### 7.3. Products CRUD
     * GET /api/products
     * GET /api/products/:id
     * GET /api/products/code/:code - Get by Client Code
     * POST /api/products
     * PUT /api/products
     * DELETE /api/products/:id
+
+#### 7.3. Customers CRUD
+    * GET /api/customers
+    * GET /api/customers/:id
+    * POST /api/customers
+    * PUT /api/customers
+    * DELETE /api/customers/:id
 
