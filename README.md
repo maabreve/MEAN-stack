@@ -1,11 +1,15 @@
 # Ads Management
-A backend layer for ads managment
+An app for ads managment
 
 # 1. Technologies
 ```
+BACKEND:
 NodeJS v8.9.1 / npm v5.5.1 - Server
 MongDB v4.0.0 - NoSql database
 Typescript - Javascript object oriented
+
+FRONTEND:
+Angular 6, Typescript, Bootstrap
 ```
 
 # 2. Prerequisites
@@ -16,22 +20,32 @@ Node / Npm
 MongoDb
   - https://www.mongodb.com/download-center
 
-Typescript: Execute the commands in a terminal
+Typescript
   - npm install -g typescript
   - npm install -g tsc
+  
+AngularCli
+  - npm install -g @angular/cli
 ```
 
 # 3. App Up and Running 
 ```
+
+Download code git clone https://github.com/maabreve/catho.git 
+
 MongoDB
 * Execute mongod.exe in a separated terminal 
 
-Application
-* Download code git clone https://github.com/maabreve/catho.git 
-* npm start
+Backend
+* go to backend folder
+* npm install & npm start
+
+Frontend
+* go to frontend folder
+* npm install & ng serve --open
 ```
 
-# 4. Entities Business
+# 4. Backend Entities
 
 ## 4.1. PricingRules Entity
 This document store the clients pricing rules for discount. 
@@ -244,53 +258,6 @@ The architecture was designed using the `Model, Repository, Service, Controller`
 There are base classes and interfaces using generics with the basic CRUD operations for Repositories, Services and Controller layers. Classes inherit from the base class with all basic operations
   
 
-#### 6.3. Folder Structure
-
-```
-├───config
-│       database.ts
-│
-├───controllers
-│   │   checkout.controller.ts
-│   │   pricing-rules.controller.ts
-│   │   product.controller.ts
-│   │
-│   └───base
-│           base.controller.ts
-│
-├───dto
-│       client-ad-item.ts
-│       client-ad.dto.ts
-│
-├───models
-│       pricing-rules.model.ts
-│       product.model.ts
-│
-├───repositories
-│   │   pricing-rules.repository.ts
-│   │   product.repository.ts
-│   │
-│   └───base
-│           base.repository.ts
-│           irepository.ts
-│
-├───routes
-│       checkout.router.ts
-│       pricing-rules.router.ts
-│       product.router.ts
-│
-└───services
-    │   checkout.service.ts
-    │   pricing-rules.service.ts
-    │   product.service.ts
-    │
-    └───base
-            base.service.ts
-            iservice.ts
-```
-
-
-
 ## 7. Endpoints
 
 #### 7.1. Checkout
@@ -304,11 +271,18 @@ There are base classes and interfaces using generics with the basic CRUD operati
     * PUT /api/pricing-rules
     * DELETE /api/pricing-rules/:id
 
-#### 7.3. Product CRUD
+#### 7.3. Products CRUD
     * GET /api/products
     * GET /api/products/:id
     * GET /api/products/code/:code - Get by Client Code
     * POST /api/products
     * PUT /api/products
     * DELETE /api/products/:id
+
+#### 7.3. Customers CRUD
+    * GET /api/customers
+    * GET /api/customers/:id
+    * POST /api/customers
+    * PUT /api/customers
+    * DELETE /api/customers/:id
 
