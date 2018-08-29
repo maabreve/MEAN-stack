@@ -40,7 +40,7 @@ Backend
 * go to backend folder
 * npm install & npm start
 
-Fronend
+Frontend
 * go to frontend folder
 * npm install & ng serve --open
 ```
