@@ -28,7 +28,7 @@ AngularCli
   - npm install -g @angular/cli
 ```
 
-# 3. App Up and Running 
+# 3. App Running 
 ```
 
 Download code git clone https://github.com/maabreve/catho.git 
@@ -57,7 +57,9 @@ The model was designed to fit in different scenarios:
 * Drop price regardless minimum - Ex: The price drops 10% for all ads for this product
 
 ### 4.1.1. Fields
-  * client: string - client code
+  * customerId: string - customer id 
+  * customerName: string - customer name
+  * productId: string - product id 
   * productCode: string - product code 
   * minimum: number - minimum number of products purchased to grant the discount
   * discountPercent: number - discount percentage to apply
@@ -86,11 +88,11 @@ The model was designed to fit in different scenarios:
  * itemsToDiscount: null
  
  
-## 4.2. ClientAdDto
-Object to store the client usage history and its pricing rules. Not persisted in database, used just for transfer information to checkout api.
+## 4.2. CustomerAdDto
+Object to store the customer usage history and its pricing rules. Not persisted in database, used just for transfer information to checkout api.
 
 ### 4.2.1. Fields
-  * client: string - client code
+  * customer: string - customer
   * items: Array<CustomerAdItemDto> - Client usage history array
       * productCode: string - product code
       * productPrice: number - original product price
@@ -113,7 +115,7 @@ Document to store product details
 ### 5.1. Rule: Discount for all ads, regardless the minimum
  ```  
 PRICING RULES
-Client: Nike
+Customer: Nike
 Product: Premium
 Product Price: 100
 Discount Percent: 10%
@@ -121,21 +123,21 @@ Minimum: 0
 ```
 
 ```
-http://localhost:3040/api/checkout/{"client": "Nike", "items": [{"productCode": "Premium", "productPrice": 100,"totalAds": 1}], "pricingRules": [{"productCode": "Premium", "minimum":  0, "discountPercent": 10}]}
+http://localhost:3040/api/checkout/{"customer": "Nike", "items": [{"productCode": "Premium", "productPrice": 100,"totalAds": 1}], "pricingRules": [{"productCode": "Premium", "minimum":  0, "discountPercent": 10}]}
 
       TotalAds: 1
       Expected Result: 90
 ```
 
 ```
-http://localhost:3040/api/checkout/{"client": "Nike", "items": [{"productCode": "Premium", "productPrice": 100,"totalAds": 2}], "pricingRules": [{"productCode": "Premium", "minimum":  0, "discountPercent": 10}]}
+http://localhost:3040/api/checkout/{"customer": "Nike", "items": [{"productCode": "Premium", "productPrice": 100,"totalAds": 2}], "pricingRules": [{"productCode": "Premium", "minimum":  0, "discountPercent": 10}]}
      
      TotalAds: 2
      Expected Result: 180
 ```     
 
 ```
-http://localhost:3040/api/checkout/{"client": "Nike", "items": [{"productCode": "Premium", "productPrice": 100,"totalAds": 3}], "pricingRules": [{"productCode": "Premium", "minimum":  0, "discountPercent": 10}]}
+http://localhost:3040/api/checkout/{"customer": "Nike", "items": [{"productCode": "Premium", "productPrice": 100,"totalAds": 3}], "pricingRules": [{"productCode": "Premium", "minimum":  0, "discountPercent": 10}]}
      
      TotalAds: 3
      Expected Result: 270
@@ -143,7 +145,7 @@ http://localhost:3040/api/checkout/{"client": "Nike", "items": [{"productCode": 
 ```
 
 ```
-http://localhost:3040/api/checkout/{"client": "Nike", "items": [{"productCode": "Premium", "productPrice": 100,"totalAds": 4}], "pricingRules": [{"productCode": "Premium", "minimum":  0, "discountPercent": 10}]}
+http://localhost:3040/api/checkout/{"customer": "Nike", "items": [{"productCode": "Premium", "productPrice": 100,"totalAds": 4}], "pricingRules": [{"productCode": "Premium", "minimum":  0, "discountPercent": 10}]}
      
      TotalAds: 4
      Expected Result: 360
@@ -152,7 +154,7 @@ http://localhost:3040/api/checkout/{"client": "Nike", "items": [{"productCode": 
 ### 5.2. Rule: Discount for all ads if buy > x ads 
 ```
 PRICING RULES
-Client: Nike
+Customer: Nike
 Product: Premium
 Product Price: 100
 Discount Percent: 10%
@@ -160,21 +162,21 @@ Minimum: 4
 ```
 
 ```
-http://localhost:3040/api/checkout/{"client": "Nike", "items": [{"productCode": "Premium", "productPrice": 100,"totalAds": 1}], "pricingRules": [{"productCode": "Premium", "minimum":  3, "discountPercent": 10}]}
+http://localhost:3040/api/checkout/{"customer": "Nike", "items": [{"productCode": "Premium", "productPrice": 100,"totalAds": 1}], "pricingRules": [{"productCode": "Premium", "minimum":  3, "discountPercent": 10}]}
      
      TotalAds: 1
      Expected Result: 100 (< 4 = no discount)
 ```
 
 ```
-http://localhost:3040/api/checkout/{"client": "Nike", "items": [{"productCode": "Premium", "productPrice": 100,"totalAds": 2}], "pricingRules": [{"productCode": "Premium", "minimum":  3, "discountPercent": 10}]}
+http://localhost:3040/api/checkout/{"customer": "Nike", "items": [{"productCode": "Premium", "productPrice": 100,"totalAds": 2}], "pricingRules": [{"productCode": "Premium", "minimum":  3, "discountPercent": 10}]}
  
       TotalAds: 2
       Expected Result: 200 (< 4 = no discount)
 ```
 
 ```
-http://localhost:3040/api/checkout/{"client": "Nike", "items": [{"productCode": "Premium", "productPrice": 100,"totalAds": 3}], "pricingRules": [{"productCode": "Premium", "minimum":  3, "discountPercent": 10}]}
+http://localhost:3040/api/checkout/{"customer": "Nike", "items": [{"productCode": "Premium", "productPrice": 100,"totalAds": 3}], "pricingRules": [{"productCode": "Premium", "minimum":  3, "discountPercent": 10}]}
       
       TotalAds: 3
       Expected R0esult: 300 (< 4 = no discount)2
@@ -190,7 +192,7 @@ http://localhost:3040/api/checkout/{"client": "Nike", "items": [{"productCode": 
 ### 5.3. Rule: Get 3 for 2 Deal 
 ```
 PRICING RULES
-Client: Nike
+Customer: Nike
 Product: Premium
 Product Price: 100
 Discount Percent: 100%
@@ -199,42 +201,42 @@ Items to Discount: 1
 ```
 
 ```
-http://localhost:3040/api/checkout/{"client": "Nike", "items": [{"productCode": "Premium", "productPrice": 100,"totalAds": 1}], "pricingRules": [{"productCode": "Premium", "minimum":  2, "discountPercent": 100, "itemsToDiscount": 1}]}
+http://localhost:3040/api/checkout/{"customer": "Nike", "items": [{"productCode": "Premium", "productPrice": 100,"totalAds": 1}], "pricingRules": [{"productCode": "Premium", "minimum":  2, "discountPercent": 100, "itemsToDiscount": 1}]}
      
      TotalAds: 1
      Expected Result: 100 
 ```     
      
  ```
- http://localhost:3040/api/checkout/{"client": "Nike", "items": [{"productCode": "Premium", "productPrice": 100,"totalAds": 2}], "pricingRules": [{"productCode": "Premium", "minimum":  2, "discountPercent": 100, "itemsToDiscount": 1}]}
+ http://localhost:3040/api/checkout/{"customer": "Nike", "items": [{"productCode": "Premium", "productPrice": 100,"totalAds": 2}], "pricingRules": [{"productCode": "Premium", "minimum":  2, "discountPercent": 100, "itemsToDiscount": 1}]}
      
      TotalAds: 2
      Expected Result: 200
  ```
  
  ```
-http://localhost:3040/api/checkout/{"client": "Nike", "items": [{"productCode": "Premium", "productPrice": 100,"totalAds": 3}], "pricingRules": [{"productCode": "Premium", "minimum":  2, "discountPercent": 100, "itemsToDiscount": 1}]}
+http://localhost:3040/api/checkout/{"customer": "Nike", "items": [{"productCode": "Premium", "productPrice": 100,"totalAds": 3}], "pricingRules": [{"productCode": "Premium", "minimum":  2, "discountPercent": 100, "itemsToDiscount": 1}]}
      
      TotalAds: 3
      Expected Result: 200 (get 3 for 2 deal)
 ```     
 
 ```
-http://localhost:3040/api/checkout/{"client": "Nike", "items": [{"productCode": "Premium", "productPrice": 100,"totalAds": 4}], "pricingRules": [{"productCode": "Premium", "minimum":  2, "discountPercent": 100, "itemsToDiscount": 1}]}
+http://localhost:3040/api/checkout/{"customer": "Nike", "items": [{"productCode": "Premium", "productPrice": 100,"totalAds": 4}], "pricingRules": [{"productCode": "Premium", "minimum":  2, "discountPercent": 100, "itemsToDiscount": 1}]}
 
      TotalAds: 4
      Expected Result: 300 
 ```
    
 ```
-http://localhost:3040/api/checkout/{"client": "Nike", "items": [{"productCode": "Premium", "productPrice": 100,"totalAds": 5}], "pricingRules": [{"productCode": "Premium", "minimum":  2, "discountPercent": 100, "itemsToDiscount": 1}]}
+http://localhost:3040/api/checkout/{"customer": "Nike", "items": [{"productCode": "Premium", "productPrice": 100,"totalAds": 5}], "pricingRules": [{"productCode": "Premium", "minimum":  2, "discountPercent": 100, "itemsToDiscount": 1}]}
 
      TotalAds: 5
      Expected Result: 400 
 ```
 
 ```
-http://localhost:3040/api/checkout/{"client": "Nike", "items": [{"productCode": "Premium", "productPrice": 100,"totalAds": 6}], "pricingRules": [{"productCode": "Premium", "minimum":  2, "discountPercent": 100, "itemsToDiscount": 1}]}
+http://localhost:3040/api/checkout/{"customer": "Nike", "items": [{"productCode": "Premium", "productPrice": 100,"totalAds": 6}], "pricingRules": [{"productCode": "Premium", "minimum":  2, "discountPercent": 100, "itemsToDiscount": 1}]}
 
      TotalAds: 6
      Expected Result: 400 
@@ -261,7 +263,7 @@ There are base classes and interfaces using generics with the basic CRUD operati
 ## 7. Endpoints
 
 #### 7.1. Checkout
-    * /api/checkout/:clientAds
+    * /api/checkout/:customerAds
 
 #### 7.2. Pricing Rules CRUD
     * GET /api/pricing-rules
