@@ -5,7 +5,7 @@
 import express = require("express");
 import { CheckoutService } from "../services/checkout.service";
 import IPricingRulesModel from '../models/pricing-rules.model';
-import CustomerAdDto from '../dto/customer-ad-item';
+import CustomerAdDto from '../dto/customer-ad.dto';
 
 export class CheckoutController {
 
@@ -14,7 +14,7 @@ export class CheckoutController {
 
     public checkout(req: express.Request, res: express.Response) {
 
-        if (!req.params.CustomerAdItemDtoAds) {
+        if (!req.params.customerAds) {
             res.status(500).json("Invalid parameters");
         }
 

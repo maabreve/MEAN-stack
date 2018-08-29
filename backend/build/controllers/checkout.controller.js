@@ -5,12 +5,12 @@ var CheckoutController = /** @class */ (function () {
     function CheckoutController() {
     }
     CheckoutController.prototype.checkout = function (req, res) {
-        if (!req.params.clientAds) {
+        if (!req.params.customerAds) {
             res.status(500).json("Invalid parameters");
         }
         try {
-            var clientAds = req.params.clientAds ? JSON.parse(req.params.clientAds) : [];
-            var checkoutService = new checkout_service_1.CheckoutService(clientAds);
+            var customerAds = req.params.customerAds ? JSON.parse(req.params.customerAds) : [];
+            var checkoutService = new checkout_service_1.CheckoutService(customerAds);
             checkoutService.checkout().then(function (items) {
                 res.json(items).status(200);
             })

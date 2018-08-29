@@ -4,18 +4,18 @@
  */
 import promise from "promise";
 import IPricingRulesModel from '../models/pricing-rules.model';
-import ClientAdDto from '../dto/client-ad.dto';
+import CustomerAdDto from '../dto/customer-ad.dto';
 
 /**
  * CheckoutService
  * constructor parameters:
- * clientAdDto: client usage history
+ * customerAdDto: client usage history
  */
 export class CheckoutService {
-    private _clientAd: ClientAdDto;
+    private _customerAd: CustomerAdDto;
 
-    constructor(clientAd: ClientAdDto) {
-    this._clientAd = clientAd;
+    constructor(customerAd: CustomerAdDto) {
+    this._customerAd = customerAd;
     }
 
     public checkout(): Promise<number> {
@@ -40,28 +40,28 @@ export class CheckoutService {
         let totalPrice: number = 0;
         
         // calculation fot all client products
-        this._clientAd.items.forEach(clientAd => {
+        this._customerAd.items.forEach(customerAd => {
             // product price 
-            let productPrice = clientAd.productPrice ?
-                clientAd.productPrice :
+            let productPrice = customerAd.productPrice ?
+                customerAd.productPrice :
                 0;
 
             // add product price to totalAds
-            totalPrice += (productPrice * clientAd.totalAds);
+            totalPrice += (productPrice * customerAd.totalAds);
 
             // apply pricing rule if exist for the current product 
-            let productPricingrule = this._clientAd.pricingRules.find(r => r.productCode === clientAd.productCode);
-            if (productPricingrule && clientAd.totalAds > 0) {
+            let productPricingrule = this._customerAd.pricingRules.find(r => r.productCode === customerAd.productCode);
+            if (productPricingrule && customerAd.totalAds > 0) {
                 let discountTotal: number = 0;
 
                 // itemsToDiscount === null -> totalAds 
                 let itemsToDiscount = productPricingrule.itemsToDiscount ?
                     productPricingrule.itemsToDiscount :
-                    clientAd.totalAds;
+                    customerAd.totalAds;
                 
-                // fator = productPricingrule.minimum > 0 -> Math.floor(clientAd.totalAds / productPricingrule.minimum )
+                // fator = productPricingrule.minimum > 0 -> Math.floor(customerAd.totalAds / productPricingrule.minimum )
                 let fator = productPricingrule.minimum > 0 ?
-                    Math.floor(clientAd.totalAds / (productPricingrule.minimum + 1)) :
+                    Math.floor(customerAd.totalAds / (productPricingrule.minimum + 1)) :
                     1;
                 
                 // discount Rule:

@@ -13,6 +13,6 @@ export class CheckoutRouter {
 
     createRoutes() {
         let checkoutController = new CheckoutController();
-        this._router.get('/api/checkout/:clientAds', checkoutController.checkout.bind(checkoutController));
+        this._router.get('/api/checkout/:customerAds', checkoutController.checkout.bind(checkoutController));
     }
 }

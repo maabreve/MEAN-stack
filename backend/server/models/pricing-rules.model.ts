@@ -37,7 +37,9 @@ import mongoose = require("mongoose");
 export let Schema = mongoose.Schema;
 
 export default interface IPricingRulesModel extends mongoose.Document {
-    client: string;
+    customerId: string;
+    customerName: string;
+    productId: string;
     productCode: string;
     minimum: number;
     discountPercent: number;

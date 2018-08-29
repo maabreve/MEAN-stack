@@ -16,7 +16,7 @@ var PricingRulesRouter = /** @class */ (function () {
         var pricingRulesController = new pricing_rules_controller_1.PricingRulesController(pricingRulesService);
         this._router.get('/api/pricing-rules', pricingRulesController.getAll.bind(pricingRulesController));
         this._router.get('/api/pricing-rules/:id', pricingRulesController.getById.bind(pricingRulesController));
-        this._router.get('/api/pricing-rules/client/:client', pricingRulesController.getByClient.bind(pricingRulesController));
+        this._router.get('/api/pricing-rules/client/:client', pricingRulesController.getByCustomer.bind(pricingRulesController));
         this._router.post('/api/pricing-rules', pricingRulesController.create.bind(pricingRulesController));
         this._router.put('/api/pricing-rules/:id', pricingRulesController.update.bind(pricingRulesController));
         this._router.delete('/api/pricing-rules/:id', pricingRulesController.delete.bind(pricingRulesController));

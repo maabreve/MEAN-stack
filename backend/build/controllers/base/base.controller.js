@@ -38,7 +38,6 @@ var BaseController = /** @class */ (function () {
     };
     BaseController.prototype.create = function (req, res) {
         var _this = this;
-        console.log('hahdashfasd');
         this._baseService
             .create(req.body)
             .then(function (menus) { return _this._sendReponse(res, httpStatus.CREATED, menus); })

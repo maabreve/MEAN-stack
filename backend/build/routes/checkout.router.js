@@ -9,7 +9,7 @@ var CheckoutRouter = /** @class */ (function () {
     }
     CheckoutRouter.prototype.createRoutes = function () {
         var checkoutController = new checkout_controller_1.CheckoutController();
-        this._router.get('/api/checkout/:clientAds', checkoutController.checkout.bind(checkoutController));
+        this._router.get('/api/checkout/:customerAds', checkoutController.checkout.bind(checkoutController));
     };
     return CheckoutRouter;
 }());

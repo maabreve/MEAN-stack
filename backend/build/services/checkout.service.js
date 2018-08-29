@@ -11,11 +11,11 @@ var promise_1 = __importDefault(require("promise"));
 /**
  * CheckoutService
  * constructor parameters:
- * clientAdDto: client usage history
+ * customerAdDto: client usage history
  */
 var CheckoutService = /** @class */ (function () {
-    function CheckoutService(clientAd) {
-        this._clientAd = clientAd;
+    function CheckoutService(customerAd) {
+        this._customerAd = customerAd;
     }
     CheckoutService.prototype.checkout = function () {
         var _this = this;
@@ -39,24 +39,24 @@ var CheckoutService = /** @class */ (function () {
         // total price
         var totalPrice = 0;
         // calculation fot all client products
-        this._clientAd.items.forEach(function (clientAd) {
+        this._customerAd.items.forEach(function (customerAd) {
             // product price 
-            var productPrice = clientAd.productPrice ?
-                clientAd.productPrice :
+            var productPrice = customerAd.productPrice ?
+                customerAd.productPrice :
                 0;
             // add product price to totalAds
-            totalPrice += (productPrice * clientAd.totalAds);
+            totalPrice += (productPrice * customerAd.totalAds);
             // apply pricing rule if exist for the current product 
-            var productPricingrule = _this._clientAd.pricingRules.find(function (r) { return r.productCode === clientAd.productCode; });
-            if (productPricingrule && clientAd.totalAds > 0) {
+            var productPricingrule = _this._customerAd.pricingRules.find(function (r) { return r.productCode === customerAd.productCode; });
+            if (productPricingrule && customerAd.totalAds > 0) {
                 var discountTotal = 0;
                 // itemsToDiscount === null -> totalAds 
                 var itemsToDiscount = productPricingrule.itemsToDiscount ?
                     productPricingrule.itemsToDiscount :
-                    clientAd.totalAds;
-                // fator = productPricingrule.minimum > 0 -> Math.floor(clientAd.totalAds / productPricingrule.minimum )
+                    customerAd.totalAds;
+                // fator = productPricingrule.minimum > 0 -> Math.floor(customerAd.totalAds / productPricingrule.minimum )
                 var fator = productPricingrule.minimum > 0 ?
-                    Math.floor(clientAd.totalAds / (productPricingrule.minimum + 1)) :
+                    Math.floor(customerAd.totalAds / (productPricingrule.minimum + 1)) :
                     1;
                 // discount Rule:
                 // itemsToDiscount * discountPercent * fator

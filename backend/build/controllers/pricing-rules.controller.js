@@ -19,8 +19,8 @@ var PricingRulesController = /** @class */ (function (_super) {
     function PricingRulesController() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    PricingRulesController.prototype.getByClient = function (req, res) {
-        var params = { client: req.params.client };
+    PricingRulesController.prototype.getByCustomer = function (req, res) {
+        var params = { customerName: req.params.customerName };
         if (!params) {
             this._sendReponse(res, httpStatus.OK, 'Not found!');
         }
