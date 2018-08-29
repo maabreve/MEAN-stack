@@ -1,15 +1,15 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 /**
- * ClientAdItemDto
+ * CustomerAdItemDto
  * Ads used by a client
  */
-var ClientAdItemDto = /** @class */ (function () {
-    function ClientAdItemDto(productCode, productPrice, totalAds) {
+var CustomerAdItemDto = /** @class */ (function () {
+    function CustomerAdItemDto(productCode, productPrice, totalAds) {
         this.productCode = productCode;
         this.productPrice = productPrice;
         this.totalAds = totalAds;
     }
-    return ClientAdItemDto;
+    return CustomerAdItemDto;
 }());
-exports.default = ClientAdItemDto;
+exports.default = CustomerAdItemDto;

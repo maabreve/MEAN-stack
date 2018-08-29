@@ -1,8 +1,8 @@
 /**
- * ClientAdItemDto
+ * CustomerAdItemDto
  * Ads used by a client    
  */
-class ClientAdItemDto {
+class CustomerAdItemDto {
     productCode: string; 
     productPrice: number; 
     totalAds: number;
@@ -14,5 +14,5 @@ class ClientAdItemDto {
     }
 }
 
-export default ClientAdItemDto;
+export default CustomerAdItemDto;
 

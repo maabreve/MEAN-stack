@@ -5,7 +5,7 @@
 import express = require("express");
 import { CheckoutService } from "../services/checkout.service";
 import IPricingRulesModel from '../models/pricing-rules.model';
-import ClientAdDto from '../dto/client-ad.dto';
+import CustomerAdDto from '../dto/customer-ad-item';
 
 export class CheckoutController {
 
@@ -14,13 +14,13 @@ export class CheckoutController {
 
     public checkout(req: express.Request, res: express.Response) {
 
-        if (!req.params.clientAds) {
+        if (!req.params.CustomerAdItemDtoAds) {
             res.status(500).json("Invalid parameters");
         }
 
         try {
-            const clientAds: ClientAdDto = req.params.clientAds ? JSON.parse(req.params.clientAds) : [];
-            const checkoutService: CheckoutService = new CheckoutService(clientAds);
+            const customerAds: CustomerAdDto = req.params.customerAds ? JSON.parse(req.params.customerAds) : [];
+            const checkoutService: CheckoutService = new CheckoutService(customerAds);
             checkoutService.checkout().then(items => {
                 res.json(items).status(200);
             })

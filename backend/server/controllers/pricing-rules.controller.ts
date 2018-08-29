@@ -6,8 +6,8 @@ import { BaseController } from './base/base.controller';
 import { PricingRulesService } from '../services/pricing-rules.service';
 export class PricingRulesController<T> extends BaseController<T> {
     
-    public getByClient(req: express.Request, res: express.Response) {
-        const params = { client: req.params.client };
+    public getByCustomer(req: express.Request, res: express.Response) {
+        const params = { customerName: req.params.customerName };
         
         if (!params) {
             this._sendReponse(res, httpStatus.OK, 'Not found!');

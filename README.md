@@ -91,7 +91,7 @@ Object to store the client usage history and its pricing rules. Not persisted in
 
 ### 4.2.1. Fields
   * client: string - client code
-  * items: Array<ClientAdItemDto> - Client usage history array
+  * items: Array<CustomerAdItemDto> - Client usage history array
       * productCode: string - product code
       * productPrice: number - original product price
       * totalAds: total ads for the product used by the customer
