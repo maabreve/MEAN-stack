@@ -48,7 +48,7 @@ Frontend
 # 4. Backend Entities
 
 ## 4.1. PricingRules Entity
-This document store the clients pricing rules for discount. 
+This document store the customers pricing rules for discount. 
 
 The model was designed to fit in different scenarios:
 
@@ -93,11 +93,11 @@ Object to store the customer usage history and its pricing rules. Not persisted 
 
 ### 4.2.1. Fields
   * customer: string - customer
-  * items: Array<CustomerAdItemDto> - Client usage history array
+  * items: Array<CustomerAdItemDto> - Customer usage history array
       * productCode: string - product code
       * productPrice: number - original product price
       * totalAds: total ads for the product used by the customer
-  * pricingRules: Array<IPricingRulesModel> - Client pricing rules array
+  * pricingRules: Array<IPricingRulesModel> - Customer pricing rules array
 
 
 ## 4.3. Product
@@ -268,7 +268,7 @@ There are base classes and interfaces using generics with the basic CRUD operati
 #### 7.2. Pricing Rules CRUD
     * GET /api/pricing-rules
     * GET /api/pricing-rules/:id
-    * GET /api/pricing-rules/client/:clientecode - Get by Client Code
+    * GET /api/pricing-rules/customer/:customerId - Get by Customer
     * POST /api/pricing-rules
     * PUT /api/pricing-rules
     * DELETE /api/pricing-rules/:id
@@ -276,7 +276,7 @@ There are base classes and interfaces using generics with the basic CRUD operati
 #### 7.3. Products CRUD
     * GET /api/products
     * GET /api/products/:id
-    * GET /api/products/code/:code - Get by Client Code
+    * GET /api/products/code/:code - Get by Product Code
     * POST /api/products
     * PUT /api/products
     * DELETE /api/products/:id
