@@ -1,5 +1,5 @@
 # Ads Management
-A backend layer for ads managment
+An app for ads managment
 
 # 1. Technologies
 ```
