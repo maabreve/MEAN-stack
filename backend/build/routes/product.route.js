@@ -1,0 +1,13 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var product_repository_1 = require("../repositories/product.repository");
+var product_controller_1 = require("../controllers/product.controller");
+var product_service_1 = require("../services/product.service");
+var product_model_1 = require("../models/product.model");
+var express = require('express');
+var router = express.Router();
+var productRepository = new product_repository_1.ProductRepository(product_model_1.ProductModel);
+var productService = new product_service_1.ProductService(productRepository);
+var productController = new product_controller_1.ProductController(productService);
+router.get('/api/products', productController.getAll);
+module.exports = (router);

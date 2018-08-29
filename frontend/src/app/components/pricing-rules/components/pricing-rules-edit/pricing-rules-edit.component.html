@@ -1,0 +1,39 @@
+<div class="container">
+  <h1>Pricing Rule</h1>
+  <form (ngSubmit)="onSubmit()" #editForm="ngForm">
+    <div class="form-group">
+      <label for="clientList">Client</label>
+      <select class="form-control" [(ngModel)]="model.customerId" id="clientList" name="clientList" required #customerSelect>
+        <option disabled hidden [value]="undefined">Please select</option>
+        <option *ngFor="let item of clientList" [value]="item._id">{{item.name}}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="productList">Product</label>
+      <select class="form-control" [(ngModel)]="model.productId" id="productList" name="productList" required>
+        <option disabled hidden [value]="undefined">Please select</option>
+        <option *ngFor="let item of productList" [value]="item._id">{{item.code}}</option>
+      </select>
+      <input type="hidden" [(ngModel)]="model.productCode" id="productCode" name="productCode" >
+
+    </div>
+
+    <div class="form-group">
+      <label for="minimum">Minumim</label>
+      <input type="number" max="5" [(ngModel)]="model.minimum" class="form-control" id="minimum" name="minimum" placeholder="Minimum number of ads to grant the discount" required>
+    </div>
+
+    <div class="form-group">
+      <label for="discountPercent">Discount Percentage</label>
+      <input type="number" max="5" [(ngModel)]="model.discountPercent" class="form-control" id="discountPercent" name="discountPercent" placeholder="Discount percentage to grant" required>
+    </div>
+
+    <div class="form-group">
+      <label for="itemsToDiscount">Items to discount</label>
+      <input type="number" max="5" [(ngModel)]="model.itemsToDiscount" class="form-control" id="itemsToDiscount" name="itemsToDiscount" placeholder="Items to grant the discount. Leave blank if there is no limit">
+    </div>
+
+    <button type="submit" class="btn btn-success"  [disabled]="!editForm.valid">Submit</button>
+  </form>
+</div>

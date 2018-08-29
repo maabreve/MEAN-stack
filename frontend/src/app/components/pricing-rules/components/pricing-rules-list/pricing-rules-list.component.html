@@ -1,0 +1,49 @@
+<a routerLink="/pricing-rules/new">New Pricing Rule</a>
+<table class="table">
+    <tr>
+        <th>
+            Customer
+        </th>
+        <th>
+            Product
+        </th>
+        <th>
+            Minimum
+        </th>
+        <th>
+            Discount Percentage
+        </th>
+        <th>
+            Items to Discount
+        </th>
+        <th>
+
+        </th>
+        <th>
+
+        </th>
+    </tr>
+    <tr *ngFor="let pr of pricingRulesList">
+        <td>
+            {{ pr.customerName }}
+        </td>
+        <td>
+            {{ pr.productCode }}
+        </td>
+        <td>
+            {{ pr.minimum }}
+        </td>
+        <td>
+            {{ pr.discountPercent }}
+        </td>
+        <td>
+            {{ pr.itemsToDiscount }}
+        </td>
+        <td>
+            <a routerLink="/pricing-rules/edit/{{ pr._id }}">Edit</a>
+        </td>
+        <td>
+            <a routerLink="/pricing-rules/delete/{{ pr._id }}">Delete</a>
+        </td>
+    </tr>
+</table>
