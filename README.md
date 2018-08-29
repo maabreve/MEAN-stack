@@ -45,9 +45,9 @@ Frontend
 * npm install & ng serve --open
 ```
 
-# 4. Backend Entities
+# 4. Documents
 
-## 4.1. PricingRules Entity
+## 4.1. PricingRules
 This document store the customers discount pricing rules. 
 
 The model was designed to fit in different scenarios:
@@ -89,7 +89,7 @@ The model was designed to fit in different scenarios:
  
  
 ## 4.2. CustomerAdDto
-Object to store the customer usage history and its pricing rules. Not persisted in database, used just for transfer information to checkout api.
+Document to store the customer usage history and its pricing rules. Not persisted in database, used just for transfer information to checkout api.
 
 ### 4.2.1. Fields
   * customer: string - customer
