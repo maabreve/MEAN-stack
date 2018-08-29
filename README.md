@@ -48,7 +48,7 @@ Frontend
 # 4. Backend Entities
 
 ## 4.1. PricingRules Entity
-This document store the customers pricing rules for discount. 
+This document store the customers discount pricing rules. 
 
 The model was designed to fit in different scenarios:
 
