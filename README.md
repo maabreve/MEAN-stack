@@ -258,53 +258,6 @@ The architecture was designed using the `Model, Repository, Service, Controller`
 There are base classes and interfaces using generics with the basic CRUD operations for Repositories, Services and Controller layers. Classes inherit from the base class with all basic operations
   
 
-#### 6.3. Backend Folder Structure
-
-```
-├───config
-│       database.ts
-│
-├───controllers
-│   │   checkout.controller.ts
-│   │   pricing-rules.controller.ts
-│   │   product.controller.ts
-│   │
-│   └───base
-│           base.controller.ts
-│
-├───dto
-│       client-ad-item.ts
-│       client-ad.dto.ts
-│
-├───models
-│       pricing-rules.model.ts
-│       product.model.ts
-│
-├───repositories
-│   │   pricing-rules.repository.ts
-│   │   product.repository.ts
-│   │
-│   └───base
-│           base.repository.ts
-│           irepository.ts
-│
-├───routes
-│       checkout.router.ts
-│       pricing-rules.router.ts
-│       product.router.ts
-│
-└───services
-    │   checkout.service.ts
-    │   pricing-rules.service.ts
-    │   product.service.ts
-    │
-    └───base
-            base.service.ts
-            iservice.ts
-```
-
-
-
 ## 7. Endpoints
 
 #### 7.1. Checkout
